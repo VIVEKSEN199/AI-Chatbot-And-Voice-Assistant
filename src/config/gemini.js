@@ -17,7 +17,13 @@ async function runChat(prompt) {
       },
       body: JSON.stringify({
         model: "llama-3.1-8b-instant",
-        messages: [{ role: "user", content: prompt }],
+        messages: [
+  {
+    role: "system",
+    content: "You are a Computer Science tutor for college students. Only answer CS related questions like DSA, OS, DBMS, Networks, OOP, Python, Java, Web Development. If question is not CS related, say: I am a CS Assistant, please ask Computer Science related questions only."
+  },
+  { role: "user", content: prompt }
+],
         temperature: 0.9,
         max_tokens: 2048,
       })
